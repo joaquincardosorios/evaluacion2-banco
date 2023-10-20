@@ -113,11 +113,10 @@ public class Cuenta implements Serializable {
         this.saldo -= monto;
     }
 
-    public void validarRegistro(String rutV, String nom, String aps, String sald, String pass,String passR) throws Exception{
+    public void validarRegistro(String rutV, String nom, String aps, String pass,String passR) throws Exception{
         if(rutV.equals("") ||
                 nom.equals("") ||
                 aps.equals("") ||
-                sald.equals("") ||
                 pass.equals("") ||
                 passR.equals("")){
             throw new Exception("Todos los campos son obligatorios");
@@ -133,7 +132,7 @@ public class Cuenta implements Serializable {
         this.setRut(rutV);
         this.setNombres(nom);
         this.setApellidos(aps);
-        this.setSaldo(Integer.parseInt(sald));
+        this.setSaldo(0);
         this.setNumeroSecreto(pass);
     }
 

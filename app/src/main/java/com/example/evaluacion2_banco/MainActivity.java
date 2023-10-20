@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    EditText et_rut, et_nombres, et_apellidos, et_password, et_passwordR ,et_saldo;
+    EditText et_rut, et_nombres, et_apellidos, et_password, et_passwordR;
     Button btn_login, btn_registro;
     Helper helper = new Helper();
     Cuenta cuenta;
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         et_apellidos = findViewById(R.id.et_apellidos);
         et_password = findViewById(R.id.et_password);
         et_passwordR = findViewById(R.id.et_passwordRep);
-        et_saldo = findViewById(R.id.et_saldo);
         btn_login = findViewById(R.id.btn_login);
         btn_registro = findViewById(R.id.btn_registrar);
 
@@ -60,22 +59,18 @@ public class MainActivity extends AppCompatActivity {
                         et_nombres.setEnabled(false);
                         et_apellidos.setText(cuenta.getApellidos());
                         et_apellidos.setEnabled(false);
-                        et_saldo.setText(String.valueOf(cuenta.getSaldo()));
-                        et_saldo.setEnabled(false);
                         et_passwordR.setVisibility(View.GONE);
                         btn_login.setVisibility(View.VISIBLE);
                         btn_registro.setVisibility(View.GONE);
                         et_rut.setError(null);
                         et_nombres.setError(null);
                         et_apellidos.setError(null);
-                        et_saldo.setError(null);
                         et_password.setError(null);
                         et_passwordR.setError(null);
                     } else{
                          // en caso de no existir coincidencias, se limpian los campos y se deja en modo registro
                          et_nombres.setText("");
                          et_apellidos.setText("");
-                         et_saldo.setText("");
                          et_passwordR.setVisibility(View.VISIBLE);
                          btn_login.setVisibility(View.GONE);
                          btn_registro.setVisibility(View.VISIBLE);
@@ -91,12 +86,11 @@ public class MainActivity extends AppCompatActivity {
             String rut = et_rut.getText().toString();
             String nom = et_nombres.getText().toString();
             String aps = et_apellidos.getText().toString();
-            String sald = et_saldo.getText().toString();
             String pass = et_password.getText().toString();
             String passR = et_passwordR.getText().toString();
 
             // LLamada a metodo para validar los campos
-            boolean validador = validarCampos(rut, nom, aps, sald, pass, passR);
+            boolean validador = validarCampos(rut, nom, aps, pass, passR);
             if(!validador){
                 throw new Exception("Hubo un error");
             }
@@ -105,10 +99,10 @@ public class MainActivity extends AppCompatActivity {
             cuenta = new Cuenta();
 
             // Se genera validacion interna de los datos ingresados, se ser valido settea los valores en la instancia
-            cuenta.validarRegistro(rut, nom, aps, sald, pass, passR);
+            cuenta.validarRegistro(rut, nom, aps, pass, passR);
 
             // guarda contenido del usuario en en Storage
-            guardarDatos(rut, aps, nom, Integer.parseInt(sald), pass);
+            guardarDatos(rut, aps, nom, pass);
 
             // Aviso de que todito salio bien
             Toast.makeText(this, "Registro Existoso", Toast.LENGTH_LONG).show();
@@ -128,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             // Verifica que la contraseña no este vacia
             String pass = et_password.getText().toString();
-            if(pass.isEmpty() || pass.equals(null)){
+            if(pass.isEmpty()){
                 et_rut.setError("Rut es Oblidatorio");
             }
 
@@ -159,25 +153,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void guardarDatos(String rut, String aps, String nom, int sald, String pass){
+    private void guardarDatos(String rut, String aps, String nom, String pass){
 
         //Guarda los datos en el Storage
-        helper.guardarShared(this,rut,'ruts', 'rut');
-        helper.guardarShared(this,nom,'nombres',rut);
-        helper.guardarShared(this,aps,'apellidos',rut);
-        helper.guardarShared(this,sald,'saldo',rut);
+        helper.guardarShared(this,rut,"ruts", "rut");
+        helper.guardarShared(this,nom,"nombres",rut);
+        helper.guardarShared(this,aps,"apellidos",rut);
+        helper.guardarShared(this,0,"saldo",rut);
         helper.guardarShared(this,pass,"password",rut);
 
         // borrar el contenido de los campos de texto
         et_nombres.setText("");
         et_apellidos.setText("");
         et_rut.setText("");
-        et_saldo.setText("");
         et_password.setText("");
         et_passwordR.setText("");
     }
     //Valida campos y genera error en vista
-    private boolean validarCampos(String rut, String nom, String aps, String sald, String pass, String passR){
+    private boolean validarCampos(String rut, String nom, String aps, String pass, String passR){
         boolean valid = true;
 
         if (rut.isEmpty()) {
@@ -192,11 +185,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (aps.isEmpty()) {
             et_apellidos.setError("Apellidos son Obligatorios");
-            valid = false;
-        }
-
-        if (sald.isEmpty()) {
-            et_saldo.setError("Saldo es Obligatorio");
             valid = false;
         }
 
