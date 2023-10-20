@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2196F3"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:gravity="center"
+        android:text="Banco de Chile"
+        android:textColor="#DFDEDE"
+        android:textSize="48sp" />
+
+    <TextView
+        android:id="@+id/tv_inicia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|center_vertical"
+        android:includeFontPadding="false"
+        android:padding="10sp"
+        android:text="Iniciar Sesion"
+        android:textColor="#DFDEDE"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/et_rut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ingrese Rut, sin punto y con guion"
+        android:layout_margin="5sp"
+        android:inputType="textPersonName"
+        android:padding="10sp" />
+    <EditText
+        android:id="@+id/et_nombres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ingrese Nombres"
+        android:layout_margin="5sp"
+        android:inputType="textPersonName"
+        android:padding="10sp" />
+    <EditText
+        android:id="@+id/et_apellidos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ingrese Apellidos"
+        android:layout_margin="5sp"
+        android:inputType="textPersonName"
+        android:padding="10sp" />
+
+    <EditText
+        android:id="@+id/et_saldo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Ingrese Saldo inicial"
+        android:layout_margin="5sp"
+        android:inputType="number"
+        android:padding="10sp" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="10sp"
+        android:layout_margin="5sp"
+        android:hint="Ingrese su clave secreta"
+        android:inputType="numberPassword" />
+
+    <EditText
+        android:id="@+id/et_passwordRep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:padding="10sp"
+        android:layout_margin="5sp"
+        android:hint="Repita se clave secreta"
+        android:inputType="numberPassword" />
+
+    <Button
+        android:id="@+id/btn_registrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:onClick="registrar"
+        android:text="Registrar" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:onClick="login"
+        android:visibility="gone"
+        android:text="Iniciar Sesion" />
+</LinearLayout>
+

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Operaciones">
+
+    <TextView
+        android:id="@+id/tv_bienvenida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:text="Bienvenido"
+        android:textSize="35sp" />
+
+    <TextView
+        android:id="@+id/tv_saldo"
+        android:paddingVertical="0dp"
+        android:textSize="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tu Saldo Actual: " />
+
+    <EditText
+        android:id="@+id/et_SaldoOp"
+        android:textSize="25dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="none"
+        android:focusable="false"/>
+
+    <TextView
+        android:id="@+id/tv_acciones"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccione una operación: " />
+
+    <Button
+        android:id="@+id/btn_girar"
+        android:paddingVertical="30dp"
+        android:textSize="30dp"
+        android:onClick="giros"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Giro" />
+
+    <Button
+        android:id="@+id/btn_depositar"
+        android:paddingVertical="30dp"
+        android:textSize="30dp"
+        android:onClick="depositos"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deposito" />
+
+    <Button
+        android:id="@+id/btn_pagar"
+        android:paddingVertical="30dp"
+        android:textSize="30dp"
+        android:onClick="pagos"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginBottom="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pago" />
+
+    <Button
+        android:id="@+id/btn_cerrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:backgroundTint="#E62828"
+        android:onClick="cerrar"
+        android:paddingVertical="5dp"
+        android:text="Cerrar Sesion" />
+</LinearLayout>
+
